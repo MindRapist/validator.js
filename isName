@@ -1,0 +1,128 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = isName;
+exports.locales = void 0;
+
+var _assertString = _interopRequireDefault(require("./util/assertString"));
+
+var _name = require("./alpha");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function isName(str) {
+  var locale = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'en-US';
+  (0, _assertString.default)(str);
+
+  if (locale in _name.name) {
+    return _name.name[locale].test(str);
+  }
+
+  throw new Error("Invalid locale '".concat(locale, "'"));
+}
+
+var locales = Object.keys(_name.name);
+exports.locales = locales;
+
+// **************************** END OF THIS FILE ***************************//
+
+// ******** THE FOLLOWING LINES OF CODE ARE PATCHING TO OTHER FILES ********//
+// *************************************************************************//
+
+// *** ./lib/alpha.js AND ./validator.js (some parts of the above code may also be required to be added to this file) ***
+// Change line 6 to:
+exports.commaDecimal = exports.dotDecimal = exports.arabicLocales = exports.englishLocales = exports.decimal = exports.name = exports.alphanumeric = exports.alpha = void 0;
+
+// Add:
+var name = {
+  'en-US': /^([A-Z]{1,}[\-\s]{0,1}[A-Z]{1,})$/i,
+  'bg-BG': /^([А-Я]{1,}[\-\s]{0,1}[А-Я])$/i,
+  'cs-CZ': /^([A-ZÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ]{1,}[\-\s]{0,1}[A-ZÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ]{1,})$/i,
+  'da-DK': /^([A-ZÆØÅ]{1,}[\-\s]{0,1}[A-ZÆØÅ]{1,})$/i,
+  'de-DE': /^([A-ZÄÖÜß]{1,}[\-\s]{0,1}[A-ZÄÖÜß]{1,})$/i,
+  'el-GR': /^([Α-ω]{1,}[\-\s]{0,1}[Α-ω]{1,})$/i,
+  'es-ES': /^([A-ZÁÉÍÑÓÚÜ]{1,}[\-\s]{0,1}[A-ZÁÉÍÑÓÚÜ]{1,})$/i,
+  'fr-FR': /^([A-ZÀÂÆÇÉÈÊËÏÎÔŒÙÛÜŸ]{1,}[\-\s]{0,1}[A-ZÀÂÆÇÉÈÊËÏÎÔŒÙÛÜŸ]{1,})$/i,
+  'it-IT': /^([A-ZÀÉÈÌÎÓÒÙ]{1,}[\-\s]{0,1}[A-ZÀÉÈÌÎÓÒÙ]{1,})$/i,
+  'hu-HU': /^([A-ZÁÉÍÓÖŐÚÜŰ]{1,}[\-\s]{0,1}[A-ZÁÉÍÓÖŐÚÜŰ]{1,})$/i,
+  'nb-NO': /^([A-ZÆØÅ]{1,}[\-\s]{0,1}[A-ZÆØÅ]{1,})$/i,
+  'nl-NL': /^([A-ZÁÉËÏÓÖÜÚ]{1,}[\-\s]{0,1}[A-ZÁÉËÏÓÖÜÚ]{1,})$/i,
+  'nn-NO': /^([A-ZÆØÅ]{1,}[\-\s]{0,1}[A-ZÆØÅ]{1,})$/i,
+  'pl-PL': /^([A-ZĄĆĘŚŁŃÓŻŹ]{1,}[\-\s]{0,1}[A-ZĄĆĘŚŁŃÓŻŹ]{1,})$/i,
+  'pt-PT': /^([A-ZÃÁÀÂÇÉÊÍÕÓÔÚÜ]{1,}[\-\s]{0,1}[A-ZÃÁÀÂÇÉÊÍÕÓÔÚÜ]{1,})$/i,
+  'ru-RU': /^([А-ЯЁ]{1,}[\-\s]{0,1}[А-ЯЁ]{1,})$/i,
+  'sl-SI': /^([A-ZČĆĐŠŽ]{1,}[\-\s]{0,1}[A-ZČĆĐŠŽ]{1,})$/i,
+  'sk-SK': /^([A-ZÁČĎÉÍŇÓŠŤÚÝŽĹŔĽÄÔ]{1,}[\-\s]{0,1}[A-ZÁČĎÉÍŇÓŠŤÚÝŽĹŔĽÄÔ]{1,})$/i,
+  'sr-RS@latin': /^([A-ZČĆŽŠĐ]{1,}[\-\s]{0,1}[A-ZČĆŽŠĐ]{1,})$/i,
+  'sr-RS': /^([А-ЯЂЈЉЊЋЏ]{1,}[\-\s]{0,1}[А-ЯЂЈЉЊЋЏ]{1,})$/i,
+  'sv-SE': /^([A-ZÅÄÖ]{1,}[\-\s]{0,1}[A-ZÅÄÖ]{1,})$/i,
+  'tr-TR': /^([A-ZÇĞİıÖŞÜ]{1,}[\-\s]{0,1}[A-ZÇĞİıÖŞÜ]{1,})$/i,
+  'uk-UA': /^([А-ЩЬЮЯЄIЇҐі]{1,}[\-\s]{0,1}[А-ЩЬЮЯЄIЇҐі]{1,})$/i,
+  'ku-IQ': /^([٠١٢٣٤٥٦٧٨٩ئابپتجچحخدرڕزژسشعغفڤقکگلڵمنوۆھەیێيطؤثآإأكضصةظذ]{1,}[\-\s]{0,1}[٠١٢٣٤٥٦٧٨٩ئابپتجچحخدرڕزژسشعغفڤقکگلڵمنوۆھەیێيطؤثآإأكضصةظذ]{1,})$/i,
+  ar: /^([٠١٢٣٤٥٦٧٨٩ءآأؤإئابةتثجحخدذرزسشصضطظعغفقكلمنهوىيًٌٍَُِّْٰ]{1,}[\-\s]{0,1}[٠١٢٣٤٥٦٧٨٩ءآأؤإئابةتثجحخدذرزسشصضطظعغفقكلمنهوىيًٌٍَُِّْٰ]{1,})$/
+};
+exports.name = name;
+
+// Add:
+name[locale] = name['en-US'];
+
+// Add:
+name[_locale] = name.ar;
+
+// Add:
+name['pt-BR'] = name['pt-PT'];
+
+// Add:
+name['pl-Pl'] = name['pl-PL'];
+
+// *** ./validator.js ***
+// Except from the regex map, the following code needs to be added to this file:
+function isName(str) {
+  var locale = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'en-US';
+  assertString(str);
+
+  if (locale in name) {
+    return name[locale].test(str);
+  }
+
+  throw new Error("Invalid locale '".concat(locale, "'"));
+}
+var locales$2 = Object.keys(name);
+// and as well:
+isName: isName,
+isNameLocales: locales$2,
+
+// *** ./index.js ***
+var _isName = _interopRequireWildcard(require("./lib/isName"));
+// and:
+isName: _isName.default,
+isNameLocales: _isName.locales,
+
+// *************************************************************************************************************//
+// *************************** SOME EXTRA **************************//
+
+// Added regex for validating mobile numbers from the Republic of Cyprus (CY)
+'el-CY': /^(\+?357|0)?(99|97|96|95\d{6})$/,
+
+// and rule for postal codes at the Republic of Cyprus (CY)
+CY: fourDigit,
+
+// ************************************ EXPERIMENTAL - NOT WORKING YET ************************************
+function isName(str) {
+  var locale = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'en-US';
+  (0, _assertString.default)(str);
+
+  if (locale in _name.name) {
+    for (let i = 0; i < _name.name.length; i++) {
+      if (_name.name[i].test(str)) {
+        return _name.name[i].test(str);
+      } else continue;
+    }
+
+    return false;
+  }
+
+  throw new Error("Invalid locale '".concat(locale, "'"));
+}
